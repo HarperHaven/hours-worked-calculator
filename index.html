@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hours Worked Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Hours Worked Calculator</h2>
+    <p>See how many hours of work a purchase costs</p>
+    <input type="number" id="wage" placeholder="Enter your hourly wage ($)" />
+    <input type="number" id="cost" placeholder="Enter item cost ($)" />
+    <button onclick="calculateHours()">Calculate</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateHours() {
+      const wage = parseFloat(document.getElementById('wage').value);
+      const cost = parseFloat(document.getElementById('cost').value);
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(wage) || isNaN(cost) || wage <= 0) {
+        resultDiv.innerHTML = 'Please enter valid numbers.';
+        return;
+      }
+
+      const hours = (cost / wage).toFixed(2);
+      resultDiv.innerHTML = `This will cost you <strong>${hours}</strong> hours of work.`;
+    }
+  </script>
+</body>
+</html>
